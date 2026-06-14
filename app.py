@@ -1,13 +1,19 @@
 from src.Heart_Disease_Prediction.logger import logging
 from src.Heart_Disease_Prediction.exception import CustomException 
 import sys
-
+from src.Heart_Disease_Prediction.components.data_ingestion import DataIngestion
+from src.Heart_Disease_Prediction.components.data_ingestion import DataIngestionConfig
 
 if __name__ == "__main__":
     logging.info("Starting the heart disease prediction application.")
 
     try:
-        a =1/0
+
+        data_ingestion = DataIngestion()
+        train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
+
+        logging.info(f"Data ingestion completed. Train data path: {train_data_path}, Test data path: {test_data_path}")
+        
     except Exception as e:
         logging.error("An error occurred: {}".format(str(e)))
         raise CustomException(e, sys)
