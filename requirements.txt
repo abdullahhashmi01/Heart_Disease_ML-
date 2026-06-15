@@ -7,7 +7,7 @@ xgboost
 catboost
 joblib
 streamlit
-
+mlflow
 shap
 
 #-e .
