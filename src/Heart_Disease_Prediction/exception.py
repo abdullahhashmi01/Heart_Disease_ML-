@@ -11,9 +11,14 @@ def error_message_detail(error, error_detail: sys):
 
 
 class CustomException(Exception):
-    def __init__(self, error_message , error_detail: sys):
+    def __init__(self, error_message, error_detail):
         super().__init__(error_message)
-        self.error_message =CustomException.get_detailed_error_message(error_message=error_message, error_detail=error_detail)
+        self.error_message = self.get_detailed_error_message(
+            error_message=error_message, 
+            error_detail=error_detail
+        )
     
-    def __str__(self):
-        return self.error_message
+    @staticmethod
+    def get_detailed_error_message(error_message, error_detail):
+        # Add your error formatting logic here
+        return f"{error_message}\nError Detail: {error_detail}"

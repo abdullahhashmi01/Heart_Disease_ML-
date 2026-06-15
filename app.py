@@ -3,6 +3,9 @@ from src.Heart_Disease_Prediction.exception import CustomException
 import sys
 from src.Heart_Disease_Prediction.components.data_ingestion import DataIngestion
 from src.Heart_Disease_Prediction.components.data_ingestion import DataIngestionConfig
+from src.Heart_Disease_Prediction.components.data_transformation import DataTransformation
+from src.Heart_Disease_Prediction.components.data_transformation import DataTransformationConfig
+
 
 if __name__ == "__main__":
     logging.info("Starting the heart disease prediction application.")
@@ -13,7 +16,15 @@ if __name__ == "__main__":
         train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
 
         logging.info(f"Data ingestion completed. Train data path: {train_data_path}, Test data path: {test_data_path}")
+
+        data_transformation_config = DataTransformationConfig()
+        data_transformation = DataTransformation()
+        data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+
+
         
     except Exception as e:
         logging.error("An error occurred: {}".format(str(e)))
         raise CustomException(e, sys)
+
+
