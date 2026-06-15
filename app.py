@@ -11,8 +11,6 @@ from src.Heart_Disease_Prediction.components.model_trainer import ModelTrainer
 from src.Heart_Disease_Prediction.components.model_trainer import ModelTrainerConfig
 
 
-
-
 if __name__ == "__main__":
     logging.info("Starting the heart disease prediction application.")
 
