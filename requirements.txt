@@ -10,5 +10,5 @@ streamlit
 mlflow
 shap
 dagshub
-
+flask
 #-e .
