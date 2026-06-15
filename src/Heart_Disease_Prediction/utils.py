@@ -31,3 +31,32 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def evaluate_models(X_train, y_train, X_test, y_test, models, param_grid):
+
+    try:
+        report = {}
+        for model_name, model in models.items():
+            logging.info(f"Evaluating {model_name}")
+            params = param_grid.get(model_name, {})
+            if params:
+                from sklearn.model_selection import GridSearchCV
+                grid_search = GridSearchCV(estimator=model, param_grid=params, cv=5, n_jobs=-1)
+                grid_search.fit(X_train, y_train)
+                best_model = grid_search.best_estimator_
+                logging.info(f"Best parameters for {model_name}: {grid_search.best_params_}")
+            else:
+                best_model = model
+                best_model.fit(X_train, y_train)
+
+            y_pred = best_model.predict(X_test)
+            from sklearn.metrics import accuracy_score
+            accuracy = accuracy_score(y_test, y_pred)
+            report[model_name] = accuracy
+            logging.info(f"{model_name} Accuracy: {accuracy}")
+
+        return report
+
+    except Exception as e:
+        raise CustomException(e, sys)
