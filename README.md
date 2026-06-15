@@ -44,8 +44,8 @@ A professional, production-grade End-to-End Machine Learning project engineered 
 ├── app.py                              # Central orchestration runner framework
 ├── README.md                           # Comprehensive user documentation center
 ├── requirements.txt                    # Project prerequisite modules
-└── setup.py                            # Python package generation management
-
+├── setup.py                            # Python package generation management
+└── streamlit_app.py                    # Production Streamlit UI Dashboard framework
 
  ** End-to-End Pipeline Workflow **
 1. Centralized Orchestration Runner (app.py)
@@ -119,6 +119,9 @@ To execute data collection routines, transformation preprocessing pipelines, mod
 
 python app.py
 
+Launch the Streamlit User Interface
+Once the pipeline has completed execution and saved the artifact models successfully, initialize the web application backend using:
+streamlit run streamlit_app.py
 
 👤 Project Author
 Lead Engineer: Abdullah Hashmi
