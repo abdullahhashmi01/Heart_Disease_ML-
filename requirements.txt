@@ -9,5 +9,6 @@ joblib
 streamlit
 mlflow
 shap
+dagshub
 
 #-e .
